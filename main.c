@@ -1,17 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "operations.c"
+#include "operations.h"
 
 int main()
 {
-    float a, b, res;
-    char fin;
-    char angle;
+    float a = 0, b = 0, res = 0;
+    char fin = 'y';
+    char angle = 'r';
     char operation;
     while (fin != 'n')
     {
         printf("Quelle operation voulez-vous effectuer : + , - , * , / , 'r' pour racine, 'e' pour exponentielle, 'c' pour cosinus, 's' pour sinus ? \n ") ;
-        scanf (" %c", &operation);
+        if (scanf(" %c", &operation) != 1)
+        {
+            break;
+        }
         if (operation == 'r' || operation == 'e' )
         {
             printf("Veuillez saisir un nombre, saisissez '0' si vous voulez utiliser le resultat precedent. \n");
@@ -83,7 +86,10 @@ int main()
         }
         res = a;
         printf("\n Voulez vous continuer ? y/n \n");
-        scanf(" %c",&fin);
+        if (scanf(" %c", &fin) != 1)
+        {
+            break;
+        }
     }
 
     return 0;
